@@ -1,0 +1,6 @@
+[
+    {"id": 1, "email": "anna@test.com", "role": "admin", "active": true},
+    {"id": 2, "email": "bob@test.com", "role": "user", "active": false},
+    {"id": 3, "email": "kate@test.com", "role": "user", "active": true},
+    {"id": 4, "email": "max@test.com", "active": true}
+]
