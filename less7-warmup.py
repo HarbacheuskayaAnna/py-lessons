@@ -28,9 +28,9 @@ class Endpoint:
 
     def headers(self):
         # TODO: верни dict {"Authorization": "Bearer <token>"}
-        dict = {}
-        dict["Authorization"] = f"Bearer {self.token}"
-        return dict
+        headers_result = {}
+        headers_result["Authorization"] = f"Bearer {self.token}"
+        return headers_result
 
     def url(self, path):
         full_url = self.base_url + path
