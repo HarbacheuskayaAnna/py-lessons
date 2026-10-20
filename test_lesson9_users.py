@@ -49,5 +49,5 @@ def test_is_valid_age_neg_17():
 def test_is_valid_age_neg_66():
     assert is_valid_age(66) is False
 
-def test_is_valid_age_pos_negative():
+def test_is_valid_age_negative():
     assert is_valid_age(-60) is False
