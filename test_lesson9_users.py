@@ -1,5 +1,6 @@
 from lesson9_users import USERS, find_user, active_names, is_valid_age
 
+import pytest
 
 # ---------- find_user ----------
 
@@ -31,23 +32,15 @@ def test_active_names_empty_list():
 # ---------- is_valid_age ----------
 # Задание 3: напиши тесты для is_valid_age сама.
 # Подумай как тестировщик: какие значения проверить на границах (boundary values)?
-def test_is_valid_age_pos_18():
-    assert is_valid_age(18) is True
 
-def test_is_valid_age_pos_65():
-    assert is_valid_age(65) is True
-
-def test_is_valid_age_pos_64():
-    assert is_valid_age(64) is True
-
-def test_is_valid_age_pos_19():
-    assert is_valid_age(19) is True
-
-def test_is_valid_age_neg_17():
-    assert is_valid_age(17) is False
-
-def test_is_valid_age_neg_66():
-    assert is_valid_age(66) is False
-
-def test_is_valid_age_negative():
-    assert is_valid_age(-60) is False
+@pytest.mark.parametrize("age, expected", [
+    (18, True, ),
+    (65, True),
+    (64, True),
+    (19, True),
+    (17, False),
+    (66, False),
+    (-60, False)
+], ids =["min-valid age", "max-valid age", "max-1-valid age", "min+1-valid age", "min-1-invalid age", "max+1-invalid age", "negative - no such age"])
+def test_is_valid_age(age, expected):
+    assert is_valid_age(age) is expected
