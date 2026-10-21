@@ -28,11 +28,6 @@ def test_active_names_returns_only_active():
 def test_active_names_empty_list():
     assert active_names([]) == []
 
-
-# ---------- is_valid_age ----------
-# Задание 3: напиши тесты для is_valid_age сама.
-# Подумай как тестировщик: какие значения проверить на границах (boundary values)?
-
 @pytest.mark.parametrize("age, expected", [
     (18, True, ),
     (65, True),
