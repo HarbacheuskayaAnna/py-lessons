@@ -13,11 +13,16 @@ def test_parse_age(text, expected):
 
 
 @pytest.mark.parametrize("text", [
-    ("abs"),
-    ("-1"),
-    ("121"),
-    ("120.99"),
-    ("")], ids =["string-invalid age", "min-invalid age", "max-invalid age", "float-invalid", "empty string"])
-def test_parse_age_invalid(text):
+    ("abs"), 
+    (""),
+    ("25.99")], ids =["string", "float", "empty"])
+def test_parse_age_not_integer(text):
     with pytest.raises(ValueError):
+        parse_age(text)
+
+@pytest.mark.parametrize("text", [
+    ("-1"),
+    ("121")], ids =["min-1", "max+1"])
+def test_parse_age_out_of_range(text):
+    with pytest.raises(ValueError, match="out of range"):
         parse_age(text)

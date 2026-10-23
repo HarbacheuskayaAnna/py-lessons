@@ -29,13 +29,13 @@ def test_active_names_empty_list():
     assert active_names([]) == []
 
 @pytest.mark.parametrize("age, expected", [
-    (18, True, ),
-    (65, True),
-    (64, True),
-    (19, True),
-    (17, False),
-    (66, False),
-    (-60, False)
-], ids =["min-valid age", "max-valid age", "max-1-valid age", "min+1-valid age", "min-1-invalid age", "max+1-invalid age", "negative - no such age"])
+    pytest.param(18, True, id="min"),
+    pytest.param(65, True, id="max"),
+    pytest.param(64, True, id="max-1"),
+    pytest.param(19, True, id="min+1"),
+    pytest.param(17, False, id="min-1"),
+    pytest.param(66, False, id="max+1"),
+    pytest.param(-60, False, id="neg_value"),
+])
 def test_is_valid_age(age, expected):
     assert is_valid_age(age) is expected
