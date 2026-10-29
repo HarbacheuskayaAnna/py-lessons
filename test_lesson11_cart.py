@@ -1,6 +1,6 @@
 import pytest
 
-
+@pytest.mark.regression
 def test_new_cart_is_empty(cart):
     assert cart.count() == 0
 
@@ -9,7 +9,7 @@ def test_add_one_item(cart):
     cart.add("backpack", 30)
     assert cart.count() == 1
 
-
+@pytest.mark.regression
 def test_total_for_two_items(filled_cart):
     assert filled_cart.total() == 60
 
@@ -23,7 +23,7 @@ def test_add_same_item_increases_qty(filled_cart):
     filled_cart.add("backpack", 30)
     assert filled_cart.count() == 4
 
-
+@pytest.mark.regression
 def test_remove_missing_item_raises(filled_cart):
     with pytest.raises(KeyError):
         filled_cart.remove("jacket")

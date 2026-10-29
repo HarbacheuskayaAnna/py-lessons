@@ -9,7 +9,7 @@ def test_apply_coupon(cart):
 def test_new_cart_is_empty_on_linux(cart):
     assert cart.count() == 0
 
-@pytest.mark.xfail(reason="Bug-101", strict=True)
+@pytest.mark.xfail(reason="Bug-101: negative price accepted", strict=True)
 def test_negative_price_raises(cart):
     with pytest.raises(ValueError):
         cart.add("bag", -10)
